@@ -22,7 +22,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # Ruby and dependencies
 RUN apt-get install -qy curl nodejs libpq-dev postgresql-9.5 postgresql-contrib-9.5 build-essential \
-                        ruby2.3 ruby2.3-dev yarn
+                        ruby2.4 ruby2.4-dev yarn
 
 RUN gem install bundler --no-ri --no-rdoc
 

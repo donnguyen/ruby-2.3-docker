@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -qy imagemagick --fix-missing && \
     apt-get install -qy libc6 libstdc++6 zlib1g libpng12-0 libjpeg-turbo8 \
                         libssl1.0.0 libfreetype6 libicu52 fontconfig \
-                        libx11-6 libxext6 libxrender1 libxcb1 xfonts-base xfonts-75dpi wget git
+                        libx11-6 libxext6 libxrender1 libxcb1 xfonts-base xfonts-75dpi wget git pdftk
 
 RUN apt-add-repository -y ppa:brightbox/ruby-ng
 RUN add-apt-repository ppa:ecometrica/servers

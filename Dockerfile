@@ -18,7 +18,7 @@ RUN wget --quiet -O - https://deb.nodesource.com/setup_12.x | sudo -E bash -
 RUN wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-RUN apt-get update && apt-get upgrade -y
+RUN apt-key update && apt-get update && apt-get upgrade -y
 
 RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb && \
     sudo dpkg -i wkhtmltox_0.12.5-1.trusty_amd64.deb && \

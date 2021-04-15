@@ -26,7 +26,7 @@ RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkh
 
 # Ruby and dependencies
 RUN apt-get install -qy curl nodejs libpq-dev postgresql-9.6 postgresql-contrib-9.6 build-essential \
-                        ruby2.5 ruby2.5-dev yarn
+                        ruby2.6 ruby2.6-dev yarn
 
 RUN gem install bundler --no-ri --no-rdoc
 

@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-RUN apt-get update && \
+RUN apt-key update && apt-get update && \
     apt-get install -qy software-properties-common && \
     apt-get install -qy libgs-dev && \
     apt-get install -qy ghostscript && \
@@ -14,20 +14,20 @@ RUN add-apt-repository ppa:ecometrica/servers
 
 RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-RUN wget --quiet -O - https://deb.nodesource.com/setup_12.x | sudo -E bash -
+RUN wget --quiet -O - https://deb.nodesource.com/setup_15.x | sudo -E bash -
 RUN wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-RUN apt-key update && apt-get update && apt-get upgrade -y
+RUN  apt-get update && apt-get upgrade -y
 
 RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb && \
     sudo dpkg -i wkhtmltox_0.12.5-1.trusty_amd64.deb && \
     sudo apt-get -f install
 
 # Ruby and dependencies
-RUN apt-get install -qy curl nodejs libpq-dev postgresql-9.6 postgresql-contrib-9.6 build-essential \
+RUN apt-get install -qy --force-yes curl nodejs libpq-dev postgresql-9.6 postgresql-contrib-9.6 build-essential \
                         ruby2.6 ruby2.6-dev yarn
 
-RUN gem install bundler --no-ri --no-rdoc
+RUN gem install bundler
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/*
